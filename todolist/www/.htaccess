@@ -1,0 +1,14 @@
+# Mise en place de la ré-écriture 
+Options +FollowSymLinks
+RewriteEngine On
+
+# Adresse de base de réécriture 
+RewriteBase /todolist/www
+
+# Règles
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+#signifie que si le fichier avec le nom spécifié dans le navigateur n'existe pas,
+# ou si le répertoire dans le navigateur n'existe pas,
+# procédez à la règle de réécriture ci-dessous
+RewriteRule (.*) index.php?query=$1 [QSA,L]
